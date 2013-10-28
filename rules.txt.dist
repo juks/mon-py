@@ -1,0 +1,26 @@
+{
+    'basic': {
+                # Equal messages that appear within this time interval will be grouped (in seconds)
+                'min_group_time': 300,
+
+                # Grouped message will be sent if there is no other messages within this time interval (in seconds)
+                'silent_interval': 30,
+
+                # Whom to notify
+                'notify': ['some@user.domain', 'another@user.domain'],
+
+                # Delimiter means regex that detects the end of multi line log entry (default is newline, when dealing with single line entries only)
+                # 'delimiter': '---',
+
+                # Events that trigger this rule
+                'events': [
+                    {
+                        # The regexp to match the message
+                        'pattern': 'error|exception',
+
+                        # Date pattern helps us group the same messages that only differ by date string that is coming together with them
+                        # 'date_pattern': '^\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2} '
+                    }
+                ]
+            }
+}

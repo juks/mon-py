@@ -1,0 +1,12 @@
+[
+    {
+        # The file name to tail
+        'filename': 'test.log',
+
+        # This overrides the rules settings
+        'silent_interval': 30,
+
+        # Rules to apply to this source
+        'common_rules': ['basic']
+    }
+]
