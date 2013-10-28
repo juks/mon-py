@@ -2,9 +2,9 @@
 
 It is a simple log monitoring tool, written by Igor Askarov (juks@juks.ru)
 
-- ☑ Tails given log files, detects important messages by user-defined patterns
-- ☑ Notifies by email
-- ☑ Groups email messages, prevents flooding
+- Tails given log files, detects important messages by user-defined patterns
+- Notifies by email
+- Groups email messages, prevents flooding
 
 # Files
 
