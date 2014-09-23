@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 #
 # Simple log file monitoring tool. Copyright Igor Askarov (juks@juks.ru). See readme.md for more information
-#
 import time, os, re, smtplib, collections, ast
 from copy import deepcopy
 
@@ -13,7 +12,8 @@ d = {'run_folder': os.getcwd()}
 defaults = {
     'max_messages_per_hour': 1000,                  # Drop message if it repeated for more than max_messages_per_hour times within one hour interval
     'mailer_path': '/usr/sbin/sendmail -t -i',      # Path to the mailer program with parameters
-    'my_email': 'mon@localhost'                     # Email 'from' field
+    'my_email': 'mon@localhost',                    # Email 'from' field
+    'my_title': 'mon'
 }
 
 # Reading ini values
@@ -60,7 +60,7 @@ def send(message, source_index=0, event_index=0):
 
     cnt = sources[source_index]['events'][event_index]['appear_count']
 
-    title = 'mon'
+    title = d['my_title']
 
     if cnt and cnt > 1:
         title = title + ' [' + str(cnt) + ']'
