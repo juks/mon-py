@@ -155,7 +155,7 @@ while 1:
             source['file_handler'].seek(stat[6])
         elif stat[6] >= source['current_pos']:
             source['file_handler'].seek(source['current_pos'])
-        
+
         while 1:
             line = source['file_handler'].readline(4096)
 
@@ -167,7 +167,7 @@ while 1:
             else:
                 print 'Reached source buffer size limit'
 
-            if 'delimiter' not in source or re.match(re.compile(source['delimiter'], re.IGNORECASE), line):
+            if 'delimiter' not in source or re.compile(source['delimiter'], re.IGNORECASE).search(line):
                 if 'events' in source:
                     for event_index, event in enumerate(source['events']):
                         if 'pattern' in event and re.compile(event['pattern'], re.IGNORECASE).search(source['buffer']):
