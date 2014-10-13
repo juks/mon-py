@@ -3,6 +3,7 @@
 # Simple log file monitoring tool. Copyright Igor Askarov (juks@juks.ru). See readme.md for more information
 import time, os, re, smtplib, collections, ast
 from copy import deepcopy
+from email.mime.text import MIMEText
 
 cb = collections.deque(maxlen=1000)
 drop_mode_start_time = 0
@@ -45,13 +46,12 @@ else:
 
 # This sub sends emails
 def send_mail(to, body, title):
-    SENDMAIL = d['mailer_path'] # sendmail location
-    p = os.popen("%s -t" % SENDMAIL, "w")
-    p.write("To: " + to + "\n")
-    p.write("From: " + d['my_email'] + "\n")
-    p.write("Subject: " + title + "\n")
-    p.write("\n") # blank line separating headers from body
-    p.write(body)
+    p = os.popen("%s -t" % d['mailer_path'], "w")
+    msg = MIMEText(body.decode('utf-8'), _charset='utf-8')
+    msg['To'] = to
+    msg['From'] = d['my_email']
+    msg['Subject'] = title
+    p.write(msg.as_string())
     p.close()
 
 # This sub decides how to send source message
