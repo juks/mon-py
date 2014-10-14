@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+de#!/usr/bin/env python
 #
 # Simple log file monitoring tool. Copyright Igor Askarov (juks@juks.ru). See readme.md for more information
 import time, os, re, smtplib, collections, ast
@@ -119,8 +119,7 @@ for source_index, source in enumerate(sources):
         for rule in source['common_rules']:
             if rule in common_rules:
                 tmp_source = deepcopy(common_rules[rule])
-                tmp_source.update(sources[source_index])
-                sources[source_index] = tmp_source
+                sources[source_index].update(tmp_source)
 
     if 'events' not in sources[source_index]: sources[source_index]['events'] = []
 
