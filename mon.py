@@ -1,4 +1,4 @@
-de#!/usr/bin/env python
+#!/usr/bin/env python
 #
 # Simple log file monitoring tool. Copyright Igor Askarov (juks@juks.ru). See readme.md for more information
 import time, os, re, smtplib, collections, ast
