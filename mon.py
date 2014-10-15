@@ -154,6 +154,8 @@ while 1:
             source['file_handler'].seek(stat[6])
         elif stat[6] >= source['current_pos']:
             source['file_handler'].seek(source['current_pos'])
+        else:
+            source['current_pos'] = 0
 
         while 1:
             line = source['file_handler'].readline(4096)
