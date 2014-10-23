@@ -172,10 +172,13 @@ while 1:
                 if 'events' in source:
                     for event_index, event in enumerate(source['events']):
                         if 'pattern' in event and re.compile(event['pattern'], re.IGNORECASE).search(source['buffer']):
+                            unique_message = source['buffer']
+                                
                             if 'date_pattern' in event and event['date_pattern']:
-                                unique_message = re.sub(re.compile(event['date_pattern'], re.IGNORECASE), '', source['buffer'])
-                            else:
-                                unique_message = source['buffer']
+                                unique_message = re.sub(re.compile(event['date_pattern'], re.IGNORECASE), '', unique_message)
+                                
+                            if 'replace_pattern' in event and event['replace_pattern']:
+                                source['buffer'] = re.sub(re.compile(event['replace_pattern'][0], re.IGNORECASE|re.MULTILINE|re.UNICODE|re.DOTALL), event['replace_pattern'][1], source['buffer'])
 
                             if source['min_group_time'] and source['last_message'] == unique_message and event['appear_time'] and time.time() - event['appear_time'] < source['min_group_time']:
                                 event['appear_count'] += 1
