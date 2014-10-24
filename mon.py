@@ -14,7 +14,8 @@ defaults = {
     'max_messages_per_hour': 1000,                  # Drop message if it repeated for more than max_messages_per_hour times within one hour interval
     'mailer_path': '/usr/sbin/sendmail -t -i',      # Path to the mailer program with parameters
     'my_email': 'mon@localhost',                    # Email 'from' field
-    'my_title': 'mon'
+    'my_title': 'mon',
+    'buffer_limit': 10240
 }
 
 # Reading ini values
@@ -163,7 +164,7 @@ while 1:
             if not line:
                 break
 
-            if len(source['buffer']) + len(line) <= 4096:
+            if len(source['buffer']) + len(line) <= int(d['buffer_limit']):
                 source['buffer'] += line
             else:
                 print 'Reached source buffer size limit'
@@ -172,13 +173,13 @@ while 1:
                 if 'events' in source:
                     for event_index, event in enumerate(source['events']):
                         if 'pattern' in event and re.compile(event['pattern'], re.IGNORECASE).search(source['buffer']):
-                            unique_message = source['buffer']
-                                
-                            if 'date_pattern' in event and event['date_pattern']:
-                                unique_message = re.sub(re.compile(event['date_pattern'], re.IGNORECASE), '', unique_message)
-                                
                             if 'replace_pattern' in event and event['replace_pattern']:
                                 source['buffer'] = re.sub(re.compile(event['replace_pattern'][0], re.IGNORECASE|re.MULTILINE|re.UNICODE|re.DOTALL), event['replace_pattern'][1], source['buffer'])
+
+                            unique_message = source['buffer']
+
+                            if 'date_pattern' in event and event['date_pattern']:
+                                unique_message = re.sub(re.compile(event['date_pattern'], re.IGNORECASE), '', unique_message)
 
                             if source['min_group_time'] and source['last_message'] == unique_message and event['appear_time'] and time.time() - event['appear_time'] < source['min_group_time']:
                                 event['appear_count'] += 1

@@ -1,3 +1,4 @@
 mailer_path=/usr/sbin/sendmail -t -i
 my_email=mon <some@domain.zone>
 my_title=mon
+buffer_limit=10240
