@@ -5,6 +5,9 @@
 
         # This overrides the rules settings
         'silent_interval': 30,
+        
+        # This adds notice to the email title
+        'notice': 'source notice',
 
         # Rules to apply to this source
         'common_rules': ['basic']
