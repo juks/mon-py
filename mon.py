@@ -11,7 +11,7 @@ drop_mode_start_time = 0
 d = {'run_folder': os.getcwd()}
 
 defaults = {
-    'max_messages_per_hour': 1000,                  # Drop message if it repeated for more than max_messages_per_hour times within one hour interval
+    'max_messages_per_hour': 500,                   # Drop message if it repeated for more than max_messages_per_hour times within one hour interval
     'mailer_path': '/usr/sbin/sendmail -t -i',      # Path to the mailer program with parameters
     'my_email': 'mon@localhost',                    # Email 'from' field
     'my_title': 'mon',
