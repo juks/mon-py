@@ -80,7 +80,7 @@ def send(message, source_index=0, event_index=0):
         if time.time() - stored_message['time'] <= 3600:
             count_per_hour += 1
 
-    if count_per_hour > d['max_messages_per_hour']:
+    if count_per_hour >= d['max_messages_per_hour']:
         if drop_mode_start_time:
             return
         else:
