@@ -5,7 +5,8 @@ import time, os, re, smtplib, collections, ast
 from copy import deepcopy
 from email.mime.text import MIMEText
 
-cb = collections.deque(maxlen=1000)
+cyclic_buffer_size=5000
+cb = collections.deque(maxlen=cyclic_buffer_size)
 drop_mode_start_time = 0
 
 d = {'run_folder': os.getcwd()}
@@ -32,6 +33,9 @@ if os.path.exists(d['run_folder'] + '/setup.ini'):
 for default_index, default_name in enumerate(defaults):
     if default_name not in d:
         d[default_name] = defaults[default_name]
+        
+if (d['max_messages_per_hour'] > cyclic_buffer_size):
+    raise Exception('Max_messages_per_hour value exceeds buffer limit')
 
 if os.path.exists(d['run_folder'] + '/rules.txt'):
     data = open(d['run_folder'] + '/rules.txt', 'r').read()
