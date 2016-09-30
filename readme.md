@@ -7,6 +7,7 @@ Mon.py is the kind of tool for dealing with these sort of cases.
 - Monitors given log files, detects important messages by user-defined patterns
 - Notifies by email
 - Groups email messages, prevents flooding
+- Supports multi-line messages
 - Lets you keep an eye on critical errors and exceptions that happen in your applications
 
 ## Files
