@@ -102,7 +102,7 @@ def send(message, source_index=0, event_index=0):
     else:
         print source_index + ' has no means of notification defined'
 
-# This sub sends the grouped message ind resets the counter
+# This sub sends the grouped message and resets the counter
 def send_grouped(source_index, event_index):
     send(sources[source_index]['last_message'], source_index=source_index, event_index=event_index)
 
