@@ -18,6 +18,9 @@
                         # The regexp to match the message
                         'pattern': 'error|exception',
 
+                        # The regexp pattern for exclusion of the messages, caught by the main pattern
+                        # 'exclude_pattern': 'not found',
+
                         # Date pattern helps us group the same messages that only differ by date string that is coming together with them
                         # 'date_pattern': '^\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2} '
                     }

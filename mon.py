@@ -177,6 +177,8 @@ while 1:
                 if 'events' in source:
                     for event_index, event in enumerate(source['events']):
                         if 'pattern' in event and re.compile(event['pattern'], re.IGNORECASE).search(source['buffer']):
+                            if 'exclude_pattern' in event and re.compile(event['exclude_pattern'], re.IGNORECASE).search(source['buffer']):
+                                continue
                             if 'replace_pattern' in event and event['replace_pattern']:
                                 source['buffer'] = re.sub(re.compile(event['replace_pattern'][0], re.IGNORECASE|re.MULTILINE|re.UNICODE|re.DOTALL), event['replace_pattern'][1], source['buffer'])
 
