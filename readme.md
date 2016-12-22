@@ -93,6 +93,9 @@ class MyFileTarget extends FileTarget {
 
 ### Same part for MySQL error log
 
+        # Default delimiter, single line mode
+        # 'delimiter': "\n",
+
         # Events that trigger this rule
         'events': [
             {
