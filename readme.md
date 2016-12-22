@@ -91,6 +91,19 @@ class MyFileTarget extends FileTarget {
 }
 ```
 
+### Same part for MySQL error log
+
+        # Events that trigger this rule
+        'events': [
+            {
+                # The regexp to match the message
+                'pattern': '\[(error|warning)\]',
+
+                # Date pattern helps us group the same messages that only differ by date string that is coming together with them
+                'date_pattern': '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} '
+            }
+        ]
+
 
 ## Usage
 
