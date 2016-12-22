@@ -2,13 +2,15 @@
 
 Sometimes you have lots of applications, each writing into it's own log file, but your team suffers from low motivation to set up a Logstash or ever browse or observe anything like that. But you need to know it there are errors, you want to improve your system quality and you want to be informed the same moment they hit to fix problems before they will be reported by users.
 
-Mon.py is the kind of tool for dealing with these sort of cases. It will push the most important errors reports right in front of your eyes.
+Mon.py is the kind of tool for dealing with these sort of cases. It will push the most important errors reports right in front of your eyes. Mon.py:
 
 - Monitors given log files, detects important messages by user-defined patterns
 - Notifies by email
 - Groups email messages, prevents flooding
+- Cuts of in case of disaster
 - Supports multi-line messages
 - Lets you keep an eye on critical errors and exceptions that happen in your applications
+- Is literally a tiny python script
 
 ## Files
 
