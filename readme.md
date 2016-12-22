@@ -21,6 +21,7 @@ Mon.py is the kind of tool for dealing with these sort of cases.
 ### Tracking the production errors of an YII2 application (PHP)
 
 rules.txt:
+
     {
         'basic': {
                     # Equal messages that appear within this time interval will be grouped (in seconds)
@@ -40,7 +41,8 @@ rules.txt:
                         {
                             # The regexp to match the message
                             'pattern': '\[error\]',
-                            # Don't need notifications of all there requests that trigger 404 Not Found exceptions
+                            
+                            # Don't need to know of all there requests that trigger 404 Not Found exceptions
                             'exclude_pattern': 'HttpException',
 
                             # Date pattern helps us group the same messages that only differ by date string that is coming together with them
