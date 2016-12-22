@@ -17,7 +17,7 @@ Mon.py is the kind of tool for dealing with these sort of cases.
       rules.txt       - message detection rules setup
       sources         - here you need to define your log files
       
-## Exampes
+## Examples
 ### Tracking the production errors of an YII2 application (PHP)
 
 rules.txt:
