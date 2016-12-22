@@ -69,6 +69,26 @@ sources.txt:
             'common_rules': ['basic']
         }
     ]
+    
+We need to have a sort of delimiter to work with the multi-line messages, and we do not whant this delimiters to irritate the eye if someone just browse the log file. This is why we extend the file target class like this:
+
+```php
+<?php
+
+namespace app\components;
+
+use yii\log\FileTarget;
+
+class MyFileTarget extends FileTarget {
+    const delimiter = "   \t";
+
+    public function formatMessage($message)
+    {
+        return parent::formatMessage($message) . self::delimiter;
+    }
+}
+```
+
 
 ## Usage
 
